@@ -23,29 +23,9 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "age")
-    private int age;
-
-    @Column(name = "gender")
-    private Gender gender;
-
-    @Column(name = "description")
-    private String description;
-
-    @Column(name = "height")
-    private int height;
-
-    @Column(name = "weight")
-    private int weight;
-
-    @Column(name = "expectations")
-    private String expectations;
-
-    @Column(name = "role")
-    private Role role;
-
-    @Column(name = "status")
-    private Status status;
+    @OneToOne
+    @Column(name = "profile")
+    private Profile profile;
 
     @CreatedDate
     @Column(name = "creation_date")
@@ -54,19 +34,12 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String username, String password, String name, int age, Gender gender, String description, int height, int weight, String expectations, Role role, Status status, LocalDateTime creationDate) {
+    public User(Long id, String username, String password, String name, Profile profile, LocalDateTime creationDate) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.name = name;
-        this.age = age;
-        this.gender = gender;
-        this.description = description;
-        this.height = height;
-        this.weight = weight;
-        this.expectations = expectations;
-        this.role = role;
-        this.status = status;
+        this.profile = profile;
         this.creationDate = creationDate;
     }
 
@@ -102,68 +75,12 @@ public class User {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public Profile getProfile() {
+        return profile;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
-    public String getExpectations() {
-        return expectations;
-    }
-
-    public void setExpectations(String expectations) {
-        this.expectations = expectations;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 
     public LocalDateTime getCreationDate() {
@@ -181,14 +98,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
-                ", age=" + age +
-                ", gender=" + gender +
-                ", description='" + description + '\'' +
-                ", height=" + height +
-                ", weight=" + weight +
-                ", expectations='" + expectations + '\'' +
-                ", role=" + role +
-                ", status=" + status +
+                ", profile=" + profile +
                 ", creationDate=" + creationDate +
                 '}';
     }
